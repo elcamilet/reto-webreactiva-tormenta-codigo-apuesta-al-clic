@@ -1,0 +1,84 @@
+
+main {
+  margin: auto;
+  padding: 1rem;
+  width: 800px;
+  max-width: calc(100% - 2rem);
+  color: white;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+.astro-a {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 220px;
+  height: auto;
+  z-index: -1;
+}
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 1em;
+}
+.text-gradient {
+  background-image: var(--accent-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400%;
+  background-position: 0%;
+}
+
+/* Estilo para el botón rojo */
+.red-button {      
+  padding: 20px;
+  border-radius: 50%; /* Hace el botón redondo */
+  font-size: 1.9rem;
+  font-weight: bold; 
+  border: 5px solid greenyellow;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transición suave */
+  display: inline-flex;
+  margin-right: 30px;
+}
+
+/* Efecto hover para el botón rojo */
+.red-button:hover {
+  color: yellow;
+  transform: scale(1.5); /* Escala el botón */
+}
+
+/* Estilo para el contador */
+.counter {
+  margin: 20px;
+  display: inline-flex;
+  margin-left: 30px;
+}
+
+/* Estilo para el botón de apuesta */
+.bet-button {
+  background-color: #ff0099;
+  color: #13151a;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 2em;
+}
+
+.bet-button:hover {
+  background-color: darkgreen;
+}
+
+.counter span {
+  font-size: 2rem;
+  font-weight: bold;
+  background: transparent;
+  border: 0;
+  color: #ff0099;
+}

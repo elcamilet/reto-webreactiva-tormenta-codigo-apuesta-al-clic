@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Astro_logo from "../components/Astro_logo.astro";
+import "../styles/main.css";
+---
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    let url = new URL(window.location.href);
+    let tokenUrl = url.searchParams.get('token');
+    let tokenCookie = "";
+    let cookies = document.cookie.split(';');
+    let name = "token="
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if (cookie.indexOf(name) === 0) {
+      tokenCookie = cookie.substring(name.length, cookie.length);
+    }
+    }
+    if (tokenCookie != tokenUrl) {
+      window.location.href = '/';
+    }
+  }, { once: true });
+</script>
+
+<Layout title="GANASTE al Clic!">
+  <main>
+    <Astro_logo />
+    <h1><span class="text-gradient">Has ganado!</span></h1>
+
+    <hr />
+    <br /><br />
+
+    <h2>Nuestro patrocinador <span class="text-gradient">WEBREACTIVA PREMIUM</span> agradece tu participación!</h2>
+    <a href="/" class="text-gradient"> Prueba de nuevo! </a>
+  </main>
+</Layout>
