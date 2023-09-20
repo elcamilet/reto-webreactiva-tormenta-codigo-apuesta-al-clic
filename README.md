@@ -1,3 +1,12 @@
+
+# Nuevo reto de WEBREACTIVA Premium!
+
+Desarrollado con Astro, desplegado en Netlify
+
+[La Codificadora de Ideas](https://lacodificadora.com)
+
+---
+
 # 🌩️ Tormenta de código: Apuesta al clic, la web que nunca te atreviste a hacer 🎰
 
 ![tormenta-codigo](https://github.com/webreactiva-devs/tormenta-codigo-apuesta-al-clic/assets/1122071/599c4ff1-58b2-4990-b1b4-951313f54750)
