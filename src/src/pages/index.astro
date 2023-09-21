@@ -6,11 +6,17 @@ import './randomNumber.js';
 
 ---
 <script>
+
 	const buttonClic = document.getElementById("buttonClic");
 	const buttonBet = document.getElementById("buttonBet");
 	let counter = document.getElementById('counter');
 	let pierde = document.getElementById('pierde');
-	let contentBet = document.getElementById('contentBet');
+	let juego = document.getElementById('juego');
+	let numeroGanador = document.getElementById('numeroGanador');
+	let apuesta = document.getElementById('apuesta');
+	let resultado = Math.floor(Math.random() * 11);
+
+	document.cookie = "token=";
 
 	buttonClic.onclick = function() {
 		let counterUp = parseInt(counter.textContent) + 1;
@@ -18,7 +24,6 @@ import './randomNumber.js';
 		counter.textContent = counterUp.toString();
 	}
 
-	let resultado = Math.floor(Math.random() * 11);
 	buttonBet.onclick = function() {
 		if (resultado == parseInt(counter.textContent)) {
 			let token = Math.random().toString(36).substr(2) + Math.random().toString(36).substr(2);
@@ -26,33 +31,38 @@ import './randomNumber.js';
 			window.location.href = '/premio?token=' + token;
 		}
 		else {
-			pierde.innerHTML = "<h1>Has perdido!</h1><h3>El número ganador era el " + resultado + "</h3><h2><a href='/' onclick='window.location.reload()' class='text-gradient'>¿Quieres la revancha?</a></h2>";
-			contentBet.innerHTML = "";
+			pierde.style.display = "block";
+			juego.style.display = "none";
+			numeroGanador.textContent = resultado.toString();
+			apuesta.textContent = counter.textContent;
 		}
 	}
-	
 	
 </script>
 
 <Layout title="Apuesta al Clic!">
-	<main>
+	<main  transition:animate="slide">
 		<Astro_logo />
 		<h1><span class="text-gradient">Apuesta al clic!</span><br/>Con Astro</h1>
 
 		<hr/>
 		<br/><br/>
+		<div id="juego">
+			<button id="buttonClic" class="red-button text-gradient">Clic</button>
 
-		<button id="buttonClic" class="red-button text-gradient">Clic</button>
+			<div class="counter">
+				<span id="counter">0</span>
+			</div>
 
-		<div class="counter">
-			<span id="counter">0</span>
-		</div>
-
-		<br/><br/>
-		<div id="contentBet">
+			<br/><br/>
 			<button id="buttonBet" class="bet-button">🎲 Prueba suerte! 🎲</button>
 		</div>
-		<div id="pierde"></div>
+
+		<div id="pierde" style="display:none">
+			<h1>Has perdido!</h1>
+			<h3>El número ganador era el <span id="numeroGanador" style="color: #FF0099"></span> y tu has apostado al <span id="apuesta" style="color: #FF0099"></span></h3>
+			<h2><a href='/' onclick='window.location.reload()' class='text-gradient'>¿Quieres la revancha?</a></h2>
+		</div>
 	</main>
 </Layout>
 

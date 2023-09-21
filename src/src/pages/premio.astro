@@ -2,35 +2,22 @@
 import Layout from "../layouts/Layout.astro";
 import Astro_logo from "../components/Astro_logo.astro";
 import "../styles/main.css";
+
+const url = Astro.url;
+let tokenUrl = url.searchParams.get('token');
+let tokenCookie = Astro.cookies.get("token");
+
+if (tokenCookie.value != tokenUrl) {
+  return Astro.redirect('/');
+}
 ---
 
-<script>
-  document.addEventListener('astro:page-load', () => {
-    let url = new URL(window.location.href);
-    let tokenUrl = url.searchParams.get('token');
-    let tokenCookie = "";
-    let cookies = document.cookie.split(';');
-    let name = "token="
-    for (let i = 0; i < cookies.length; i++) {
-      let cookie = cookies[i].trim();
-      if (cookie.indexOf(name) === 0) {
-      tokenCookie = cookie.substring(name.length, cookie.length);
-    }
-    }
-    if (tokenCookie != tokenUrl) {
-      window.location.href = '/';
-    }
-  }, { once: true });
-</script>
-
 <Layout title="GANASTE al Clic!">
-  <main>
+  <main transition:animate="slide">
     <Astro_logo />
     <h1><span class="text-gradient">Enhorabuena!</span></h1>
-
-    <hr />
-    <br /><br />
-
+    <hr/>
+    <br/><br/>
     <h2><span class="text-gradient">WEBREACTIVA PREMIUM</span> agradece tu participación!</h2>
     <h2>Has ganado un <span class="calambrazo">CALAMBRAZO!</span></h2>
     <img src="https://user-images.githubusercontent.com/1122071/265408979-599c4ff1-58b2-4990-b1b4-951313f54750.jpeg" alt="">
