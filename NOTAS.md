@@ -17,7 +17,11 @@ Se añade Netlify con:
 ` `  
 NETLIFY
 ==
-Se ha de añadir al build lo siguiente:
+Se ha de añadir al **Build command** lo siguiente:
 ```
 astro build
+```
+Y al **Publish directory** esto:
+```
+/src/dist
 ```
